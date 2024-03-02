@@ -23,6 +23,5 @@ yarn-debug.log*
 yarn-error.log*
 
 .idea
-
 react2023moviedb.iml
 package-lock.json
