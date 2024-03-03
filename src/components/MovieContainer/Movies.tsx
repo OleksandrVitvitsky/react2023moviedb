@@ -14,12 +14,12 @@ const Movies: FC<IProps> = () => {
 
 
     useEffect(() => {
-        movieService.getAll().then(({data}) => setMovies(data))
+        movieService.getAll().then(({data}) =>setMovies(data.results))
+
     }, [])
     return (
         <div>
-            {movies.map(movie => <Movie key={movie.id} movie={movie}
-            />)}
+            {movies.map(movie => <Movie key = {movie.id} movie={movie}/>)}
         </div>
     );
 };

@@ -5,7 +5,7 @@ import {Movies} from "../components";
 const MoviesPage = () => {
     return (
         <div>
-            <Outlet/>
+            {/*<Outlet/>*/}
             <hr/>
             <Movies/>
         </div>
