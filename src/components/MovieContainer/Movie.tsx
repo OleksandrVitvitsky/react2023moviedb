@@ -37,7 +37,7 @@ const Movie: FC<IProps> = ({movie}) => {
     const navigate = useNavigate();
 
     return (
-       <div className={css.MovieContainer} onClick={() => navigate(id.toString(), {state: {movie}})}>
+       <div className={css.MovieContainer} onClick={() => navigate('/movies/'+id.toString(), { state: { movie } })}>
             <img src={posterURL} alt={title}/>
             <h2>{title}</h2>
             <div>

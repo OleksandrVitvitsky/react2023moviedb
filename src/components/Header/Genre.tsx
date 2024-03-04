@@ -1,5 +1,5 @@
 import {FC, PropsWithChildren} from "react";
-import {NavLink, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
 import {IGenre} from "../../interfaces";
 import css from './Header.module.css'

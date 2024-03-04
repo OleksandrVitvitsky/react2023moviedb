@@ -10,7 +10,8 @@ const urls = {
     movies: {
         base: `${discover}${movie}`,
         byId: (id:number):string => `${movie}/${id}`,
-        byGenreId: (id:number):string => `${discover}${movie}?with_genres=${id}`
+        byGenreId: (id:number):string => `${discover}${movie}?with_genres=${id}`,
+        byName: (searchText:string):string => `${baseURL}/search/movie?query=${searchText}`
     },
     genres:{
         base: genres
