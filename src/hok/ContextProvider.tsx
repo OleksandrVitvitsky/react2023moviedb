@@ -1,25 +1,126 @@
-import {createContext, FC, PropsWithChildren, ReactNode} from "react";
+import { createContext, FC, PropsWithChildren, ReactNode, useEffect, useState } from "react";
 
-const FirstContext = createContext<number>(null)
-const SecondContext = createContext<{ name: string }>(null)
+import {IContextData, IGenre} from "../interfaces";
+import { genreService } from "../services";
 
+
+
+const Context = createContext <IContextData | undefined> (undefined);
 
 interface IProps extends PropsWithChildren {
-
+    children: ReactNode;
 }
 
-const ContextProvider: FC<IProps> = ({children}) => {
+const ContextProvider: FC<IProps> = ({ children }) => {
+    const [genres, setGenres] = useState<IGenre[]>([]);
+
+
+
+    useEffect(() => {
+        genreService.getAll().then(({ data }) => setGenres(data.genres));
+    }, []);
+
+    function getGenresByIDs (allGenres:IGenre[],itemsIDs: number[]): IGenre[]  {
+
+        // if (!Array.isArray(allGenres)) {
+        //     console.error("allGenres is not an array");
+        //     return [];
+        // }
+        return allGenres.filter(genre => itemsIDs.includes(genre.id));
+    };
+
+    function getGenreNamesString  (itemsIDs: IGenre[]): string  {
+        return itemsIDs.map(genre => genre.name).join('/ ');
+    };
+
+    const contextData: IContextData = {
+        getGenresByIDs,
+        getGenreNamesString,
+        genres
+    };
+
     return (
-        <FirstContext.Provider value={555}>
-            <SecondContext.Provider value={{name: 'Max'}}>
-                {children}
-            </SecondContext.Provider>
-        </FirstContext.Provider>
+        <Context.Provider value={contextData}>
+            {children}
+        </Context.Provider>
     );
 };
 
-export {
-    ContextProvider,
-    FirstContext,
-    SecondContext
-};
+export { ContextProvider, Context };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import {createContext, FC, PropsWithChildren, ReactNode, useEffect, useState} from "react";
+// import {IGenre} from "../interfaces";
+// import {genreService} from "../services";
+//
+// const Context = createContext<IGenre[]>([])
+//
+// interface IProps extends PropsWithChildren {
+//     children: ReactNode;
+// }
+//
+// const ContextProvider: FC<IProps> = ({children}) => {
+//
+//     const [genres, setGenres] = useState<IGenre[]>([])
+//
+//
+//     useEffect(() => {
+//         genreService.getAll().then(({data}) =>setGenres(data))
+//
+//     }, [])
+//
+//     const getGenresByIDs = (itemsIDs:IGenre[] ):IGenre[] => {
+//         return genres.filter(genre => itemsIDs.includes(genre.id));
+//     }
+//     const getGenreNamesString = (itemsIDs:IGenre[] ):string => {
+//         return itemsIDs.map(genre => genre.name).join('/ ');
+//     }
+//
+//     return (
+//         <Context.Provider value={{getGenresByIDs}}>
+//               {children}
+//         </Context.Provider>
+//     );
+// };
+//
+// export {
+//     ContextProvider,
+//     Context
+// };

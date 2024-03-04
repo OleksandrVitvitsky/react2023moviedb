@@ -1,0 +1,40 @@
+.MainMoviesPage{
+    margin-top: 7vh;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1rem;
+    gap: 3rem ;
+    max-width: 85%;
+    align-items: center;
+    justify-content: center;
+    /*column-gap: 2rem;*/
+}
+
+.MovieContainer{
+    height: 35vh;
+    max-width: 10vw;
+    margin: 0 auto;
+    flex-grow: 1;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+.MainMoviesPage .MovieContainer:hover{
+   transform: scale(1.2, 1.2);
+    transition: transform 0.5s ease-in-out;
+}
+.MainMoviesPage:hover > .MovieContainer:not(:hover){
+    filter: blur(10px);
+    transform: scale(0.9, 0.9);
+}
+.MovieContainer:not(:hover) {
+    transition: transform 0.5s ease-in-out;
+    transform: scale(1);
+}
+.MovieContainer img{
+    max-width: 100%;
+    height: 85%;
+    /*display: block;*/
+    margin-top: 0 ;
+}

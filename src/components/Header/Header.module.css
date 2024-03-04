@@ -1,5 +1,135 @@
-.Header{
-    height: 35px;
-    background-color: #67b4f8;
-    text-align: center;
+.HeaderContainer{
+    height: 7vh;
+    background-color: #043360;
+    /*text-align: center;*/
+    position: fixed;
+    width: 100vw;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+
+}
+.Home{
+    margin-left:30px;
+    padding-right: 15px ;
+    border-right: 3px solid;
+
+    /*font-size: 2.5em;*/
+
+
+    /*font-size: 36px;*/
+    /*font-family: 'Arial', sans-serif;*/
+    /*background: linear-gradient(90deg, #ff00ff, #00ffff);*/
+    /*-webkit-background-clip: text;*/
+    /*background-clip: text;*/
+    /*color: transparent;*/
+
+    font-size: 40px;
+
+}
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+.HeaderContainer > h2{
+    padding-left:15px;
+    margin-right:40px ;
+    border-left: 3px solid;
+    font-size: 2em;
+}
+
+h2 > a{
+    text-decoration:none;
+    color: black;
+}
+.Home,.HeaderContainer > h2, .HeaderContainer > h2 > a{
+    font-family: 'Arial', sans-serif;
+    background-size: 200% 200%;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: gradientAnimation 5s linear infinite;
+
+    border-image: linear-gradient(45deg, #ff00ff, #00ffff) 1;
+    background-image: linear-gradient(45deg, #ff00ff, #00ffff);
+    height: auto;
+    display: block;
+
+}
+.genreItem{
+    color: white;
+    font-size: 13px;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 3px 7px;
+    margin: 0 7px;
+    position: relative;
+    transition: all .5s;
+}
+.genreItem:hover{
+    background-color: dodgerblue;
+    color: white;
+}
+
+.genreItem::before{
+    content: "";
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    height: 12px;
+    width: 12px;
+    border: 3px solid dodgerblue;
+    border-width: 0 0 3px 3px;
+    opacity: 0;
+    transition: all 0.3s;
+
+}
+.genreItem::after{
+    content: "";
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    height: 12px;
+    width: 12px;
+    border: 3px solid dodgerblue;
+    border-width:  3px 3px 0 0;
+    opacity: 0;
+    transition: all 0.3s;
+
+}
+.genreItem:hover::before{
+    opacity: 1;
+    bottom: -8px;
+    left: -8px;
+}
+.genreItem:hover::after{
+    opacity: 1;
+    top: -8px;
+    right: -8px;
+}
+.genreContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+}
+
+.HeaderCenterContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
 }

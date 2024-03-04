@@ -3,6 +3,7 @@ import {FC, PropsWithChildren, useEffect, useState} from "react";
 import {IMovie} from "../../interfaces";
 import {movieService} from "../../services";
 import {Movie} from "./Movie";
+import css from './Movies.module.css'
 
 interface IProps extends PropsWithChildren {
 
@@ -18,7 +19,7 @@ const Movies: FC<IProps> = () => {
 
     }, [])
     return (
-        <div>
+        <div className={css.MainMoviesPage}>
             {movies.map(movie => <Movie key = {movie.id} movie={movie}/>)}
         </div>
     );
