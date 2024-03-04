@@ -2,6 +2,7 @@ import { createContext, FC, PropsWithChildren, ReactNode, useEffect, useState } 
 
 import {IContextData, IGenre} from "../interfaces";
 import { genreService } from "../services";
+import {baseURL_Poster, urls} from "../constants";
 
 
 
@@ -21,21 +22,20 @@ const ContextProvider: FC<IProps> = ({ children }) => {
     }, []);
 
     function getGenresByIDs (allGenres:IGenre[],itemsIDs: number[]): IGenre[]  {
-
-        // if (!Array.isArray(allGenres)) {
-        //     console.error("allGenres is not an array");
-        //     return [];
-        // }
-        return allGenres.filter(genre => itemsIDs.includes(genre.id));
+         return allGenres.filter(genre => itemsIDs.includes(genre.id));
     };
+    function getUrlPoster (pathPoster:string):string{
+        return baseURL_Poster + urls.poster.base(pathPoster)
+    }
 
     function getGenreNamesString  (itemsIDs: IGenre[]): string  {
-        return itemsIDs.map(genre => genre.name).join('/ ');
+        return itemsIDs.map(genre => genre.name).join('     ');
     };
 
     const contextData: IContextData = {
         getGenresByIDs,
         getGenreNamesString,
+        getUrlPoster,
         genres
     };
 

@@ -6,5 +6,6 @@ export interface IMovie {
     popularity: string;
     poster_path: string;
     title: string;
-    release_date: string
+    release_date: string;
+    overview: string;
 }

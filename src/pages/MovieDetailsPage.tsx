@@ -1,15 +1,12 @@
 import {Outlet} from "react-router-dom";
+import {MovieDetails, Movies} from "../components";
 
 
 const MovieDetailsPage = () => {
 
     return (
         <div>
-            MovieDetailsPage
-            <Outlet/>
-
-
-
+            <MovieDetails/>
         </div>
     );
 };

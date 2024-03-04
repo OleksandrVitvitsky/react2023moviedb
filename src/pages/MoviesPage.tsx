@@ -5,8 +5,7 @@ import css from './MoviesPage.module.css'
 const MoviesPage = () => {
     return (
         <div className={css.MainMoviesPageContainer}>
-            {<Outlet/>}
-            <Movies/>
+               <Movies/>
         </div>
     );
 };

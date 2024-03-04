@@ -1,5 +1,5 @@
 .MainMoviesPage{
-    margin-top: 7vh;
+    margin-top: 10vh;
     display: flex;
     flex-wrap: wrap;
     padding: 1rem;
@@ -37,4 +37,74 @@
     height: 85%;
     /*display: block;*/
     margin-top: 0 ;
+}
+
+
+.MovieDetails__Container{
+    margin-top: 10vh;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+
+}
+.MovieDetails__Poster{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 50px;
+    flex-grow: 1;
+
+}
+.MovieDetails_Img{
+  margin-top: 10%;
+
+}
+
+
+.MovieDetails__Poster img{
+    height: 70%;
+    max-width: 95%;
+}
+.MovieDetails__Titles{
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-grow: 1;
+}
+.MovieDetails__Titles > h1, .MovieDetails__Titles > h2, .MovieDetails__Titles p{
+    font-family: 'Pacifico', cursive; /* Креативний шрифт (наприклад, 'Pacifico') */
+    font-size: 2.2em;
+    color: #fff; /* Білий колір тексту (можна змінити відповідно до фону) */
+    background: linear-gradient(45deg, #ff4081, #01b6f5); /* Градієнт, що підходить до світлого фону */
+    text-align: center;
+    text-transform: uppercase; /* Зробити текст великими літерами */
+    letter-spacing: 3px; /* Додатковий інтервал між літерами */
+    /*margin-bottom: 15px;*/
+}
+.MovieDetails__Titles > h2{
+    font-size: 4.5em;
+    /*margin-bottom: 15px;*/
+
+}
+.MovieDetails__Titles p{
+    font-size: 1.4em;
+}
+.MovieDetails__Overview{
+    /*width: 50%;*/
+    height: 75%;
+    margin-bottom: 5%;
+    max-width: 55%; /* Максимальна ширина тексту для полегшення читання */
+    color: #333; /* Колір тексту */
+    font-size: 1.2em; /* Розмір шрифту */
+    line-height: 1.6; /* Міжрядковий інтервал */
+    text-align: justify; /* Вирівнювання тексту по ширині */
+    padding: 20px;
+    background: linear-gradient(45deg, #ff4081, #01b6f5); /* Градієнтний фон */
+    border-radius: 8px; /* Закруглені кути блока */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Тінь блока */
 }

@@ -1,4 +1,5 @@
 import {useContext} from "react";
+import {useForm} from "react-hook-form";
 
 import css from './Header.module.css'
 import {Context} from "../../hok";
@@ -11,6 +12,7 @@ import {NavLink} from "react-router-dom";
 const Header = () => {
    const  contextData = useContext(Context);
 
+    const {register, handleSubmit} = useForm({});
     const allGenresItem:IGenre[] = contextData && contextData.genres ? contextData.genres : [];
 
     return (
@@ -22,10 +24,12 @@ const Header = () => {
                 {allGenresItem.map(genre => <Genre key = {genre.id} genre = {genre}/>)}
                 </div>
                 <div className={css.SearchContainer}>
-
+                    <form onSubmit="handleSubmit(save)">
+                        <div>Username: <input type="text" {...register('username')}/></div>
+                    </form>
                 </div>
             </div>
-            <h2> <a href="https://t.me/oleksandr_vit" target={"_blank"}> by @Oleksandr_Vit</a></h2>
+            <h2><a href="https://t.me/oleksandr_vit" target={"_blank"}> by @Oleksandr_Vit</a></h2>
         </div>
     );
 };
