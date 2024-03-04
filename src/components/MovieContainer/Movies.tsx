@@ -34,7 +34,7 @@ const Movies: FC<IProps> = () => {
                 setPrevNext({prev: data.prev, next: data.next})
 
             })
-        }}, [id,movies, query.get('page')])
+        }}, [id, query.get('page')])
 
     const onSubmit: SubmitHandler<ISearch> = async (objSearch)=> {
 
@@ -91,8 +91,9 @@ const Movies: FC<IProps> = () => {
            <div className={css.MainMovies__Buttons}>
                {/*<button disabled={!prevNext.prev} onClick={prev}>prev</button>*/}
                {/*<button disabled={!prevNext.next} onClick={next}>next</button>*/}
-               <button disabled={prevNext.prev!== null} onClick={prev}>prev</button>
-               <button disabled={prevNext.next!== null} onClick={next}>next</button>
+
+               <button  onClick={prev}>prev</button>
+               <button  onClick={next}>next</button>
            </div>
 
        </div>
