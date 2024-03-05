@@ -3,6 +3,7 @@ import {useNavigate} from "react-router-dom";
 
 import {IGenre} from "../../interfaces";
 import css from './Header.module.css'
+
 interface IProps extends PropsWithChildren {
     genre:IGenre
 }

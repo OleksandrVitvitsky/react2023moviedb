@@ -43,12 +43,6 @@ const Movies: FC<IProps> = () => {
             return
         }
 
-
-        // if (!objSearch.querySearch) {
-        //     setMovies([]);
-        //     //setMovies(movies);
-        // } else {
-        //
         try {
             await movieService.search(objSearch.querySearch).then(({data}) => setMovies(data.results))
         } catch (e) {
@@ -63,8 +57,8 @@ const Movies: FC<IProps> = () => {
         setQuery(prev => {
 
             const currentPage = prev.get('page');
-
-            if (currentPage !== null && currentPage !== undefined) {
+            console.log(currentPage);
+            if (currentPage !== null && currentPage !== undefined && currentPage !== "1") {
                 prev.set('page', (parseInt(currentPage, 10) - 1).toString());
             }
 
