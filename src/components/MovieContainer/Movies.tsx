@@ -86,25 +86,25 @@ const Movies: FC<IProps> = () => {
     }
 
     return (
-       <div className={css.MainMovies_Container}>
+        <div className={css.MainMovies_Container}>
             <form className={css.searchForm} onSubmit={handleSubmit(onSubmit)}>
                 <input type="text" placeholder={'enter your text'}  {...register('querySearch')}/>
                 <button type="submit">Search</button>
             </form>
+            <div className={css.MainMovies__Buttons}>
+                {/*<button disabled={!prevNext.prev} onClick={prev}>prev</button>*/}
+                {/*<button disabled={!prevNext.next} onClick={next}>next</button>*/}
+
+                <button onClick={prev}>prev</button>
+                <button onClick={next}>next</button>
+            </div>
+
+            <div className={css.MainMoviesPage}>
+                {movies.map(movie => <Movie key={movie.id} movie={movie}/>)}
+            </div>
 
 
-                <div className={css.MainMoviesPage}>
-                        {movies.map(movie => <Movie key={movie.id} movie={movie}/>)}
-                </div>
-           <div className={css.MainMovies__Buttons}>
-               {/*<button disabled={!prevNext.prev} onClick={prev}>prev</button>*/}
-               {/*<button disabled={!prevNext.next} onClick={next}>next</button>*/}
-
-               <button  onClick={prev}>prev</button>
-               <button  onClick={next}>next</button>
-           </div>
-
-       </div>
+        </div>
     )
         ;
 };
