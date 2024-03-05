@@ -38,18 +38,26 @@ const Movies: FC<IProps> = () => {
         }}, [id, query.get('page')])
 
     const onSubmit: SubmitHandler<ISearch> = async (objSearch)=> {
-
-        if (!objSearch.querySearch) {
-            setMovies([]);
-            //setMovies(movies);
-        } else {
-            try {
-                await movieService.search(objSearch.querySearch).then(({data}) => setMovies(data.results))
-            } catch (e) {
-                setError(true)
-            }
-            reset();
+        if (objSearch.querySearch == "") {
+            reset()
+            return
         }
+
+
+        // if (!objSearch.querySearch) {
+        //     setMovies([]);
+        //     //setMovies(movies);
+        // } else {
+        //
+        try {
+            await movieService.search(objSearch.querySearch).then(({data}) => setMovies(data.results))
+        } catch (e) {
+            setError(true)
+        }
+        reset();
+
+        // }
+
     }
     const prev = () => {
         setQuery(prev => {
