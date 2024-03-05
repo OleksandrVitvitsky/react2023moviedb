@@ -1,12 +1,11 @@
 import {FC, PropsWithChildren, useEffect, useState} from "react";
-
-import {IMovie, ISearch, ISearchParam} from "../../interfaces";
-import {movieService} from "../../services";
-import {Movie} from "./Movie";
-import css from './Movies.module.css'
 import {useParams, useSearchParams} from "react-router-dom";
 import {SubmitHandler, useForm} from "react-hook-form";
 
+import {IMovie, ISearch} from "../../interfaces";
+import {movieService} from "../../services";
+import {Movie} from "./Movie";
+import css from './Movies.module.css'
 
 interface IProps extends PropsWithChildren {
 
@@ -16,10 +15,12 @@ interface IProps extends PropsWithChildren {
 const Movies: FC<IProps> = () => {
     const {reset,register, handleSubmit} = useForm<ISearch>();
     const [movies, setMovies] = useState<IMovie[]>([])
-    const [error, setError] = useState<boolean>();
+    const [, setError] = useState<boolean>();
     const {id} = useParams();
+
     const [query, setQuery] = useSearchParams({page: '1'});
-    const [prevNext, setPrevNext] = useState({prev: null, next: null})
+
+    const [, setPrevNext] = useState({prev: null, next: null})
 
 
     useEffect(() => {
@@ -40,6 +41,7 @@ const Movies: FC<IProps> = () => {
 
         if (!objSearch.querySearch) {
             setMovies([]);
+            //setMovies(movies);
         } else {
             try {
                 await movieService.search(objSearch.querySearch).then(({data}) => setMovies(data.results))
@@ -51,8 +53,7 @@ const Movies: FC<IProps> = () => {
     }
     const prev = () => {
         setQuery(prev => {
-            // prev.set('page', (+prev.get('page') - 1).toString())
-            // return prev
+
             const currentPage = prev.get('page');
 
             if (currentPage !== null && currentPage !== undefined) {
@@ -65,8 +66,7 @@ const Movies: FC<IProps> = () => {
 
     const next = () => {
         setQuery(prev => {
-            // prev.set('page', (+prev.get('page') + 1).toString())
-            // return prev
+
             const currentPage = prev.get('page');
 
             if (currentPage !== null && currentPage !== undefined) {
@@ -103,4 +103,4 @@ const Movies: FC<IProps> = () => {
 
 export {
     Movies
-};
+}
