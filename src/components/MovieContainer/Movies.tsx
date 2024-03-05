@@ -38,7 +38,7 @@ const Movies: FC<IProps> = () => {
         }}, [id, query.get('page')])
 
     const onSubmit: SubmitHandler<ISearch> = async (objSearch)=> {
-        if (objSearch.querySearch == "") {
+        if (objSearch.querySearch === "") {
             reset()
             return
         }
